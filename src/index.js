@@ -3,23 +3,29 @@ import reactDom from 'react-dom'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import { BrowserRouter,Redirect, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import reducers from './reducers'
 import Login from './container/login/login';
 import Regsiter from './container/register/register';
+import AuthRoute from './conponent/authroute/authroute'
 import './config'
 import 'antd-mobile/dist/antd-mobile.css';
+import './index.css'
 
 const store = createStore(reducers,applyMiddleware(thunk))
+function Boss(){
+    return <h1>boss</h1>
+}
 
 reactDom.render(
     (<Provider store={store} >      
         <BrowserRouter>
-            <Switch>
+            <div>
+                <AuthRoute></AuthRoute>
                 <Route path='/login' component={Login}></Route>
+                <Route path='/boss' component={Boss}></Route>
                 <Route path='/register' component={Regsiter}></Route>
-                <Redirect to='/login'></Redirect>
-            </Switch>
+            </div>
         </BrowserRouter>
      </Provider>),
     document.getElementById('root')
