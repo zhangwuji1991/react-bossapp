@@ -7,10 +7,10 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import reducers from './reducers'
 import Login from './container/login/login';
 import Regsiter from './container/register/register';
-import AuthRoute from './conponent/authroute/authroute'
+import AuthRoute from './component/authroute/authroute'
 import './config'
 import 'antd-mobile/dist/antd-mobile.css';
-import './index.css'
+import './index.less'
 
 const store = createStore(reducers,applyMiddleware(thunk))
 function Boss(){

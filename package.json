@@ -149,7 +149,9 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-transform-decorators-legacy": "^1.3.5"
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0"
   },
   "proxy": "http://localhost:9093"
 }
