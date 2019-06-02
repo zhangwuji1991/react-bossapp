@@ -8,9 +8,11 @@ import reducers from './reducers'
 import Login from './container/login/login';
 import Regsiter from './container/register/register';
 import AuthRoute from './component/authroute/authroute'
+import "lib-flexible"
 import './config'
 import 'antd-mobile/dist/antd-mobile.css';
 import './index.less'
+
 
 const store = createStore(reducers,applyMiddleware(thunk))
 function Boss(){

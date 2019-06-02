@@ -45,6 +45,11 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 const lessRegex = /\.less$/;
 const lessModuleRegex = /\.module\.less$/;
 
+const px2rem = require('postcss-px2rem-exclude');
+//加入
+
+
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -99,6 +104,7 @@ module.exports = function(webpackEnv) {
               },
               stage: 3,
             }),
+            px2rem({ remUnit: 75, exclude: /node_modules/i }),
             // Adds PostCSS Normalize as the reset css with default options,
             // so that it honors browserslist config in package.json
             // which in turn let's users customize the target behavior as per their needs.
