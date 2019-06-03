@@ -1,7 +1,8 @@
 import React from 'react'
-import Logo from '../../component/logo/logo'
+import Logo from '../../component/logo/index'
 import { Button, WhiteSpace, InputItem, Radio, List, Toast  } from 'antd-mobile';
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 import {register} from '../../redux/user.redux'
 import './index.less'
 
@@ -37,6 +38,7 @@ class Regsiter extends React.Component{
         const RadioItem = Radio.RadioItem;
         return(
             <div className="flex-container">
+                {this.props.redirectTo ? <Redirect to={this.props.redirectTo}></Redirect> : null}
                 <Logo/>
                 <List>
                     {   this.props.msg ?
@@ -47,7 +49,7 @@ class Regsiter extends React.Component{
                     <WhiteSpace size="xl"/>
                     <InputItem type="password" onChange={v=>this.handleChange('pwd',v)}>密码</InputItem>
                     <WhiteSpace size="xl" />
-                    <InputItem onChange={v=>this.handleChange('repeatpwd',v)}>确认密码</InputItem>
+                    <InputItem type="password" onChange={v=>this.handleChange('repeatpwd',v)}>确认密码</InputItem>
                     <WhiteSpace size="xl" />
                     <RadioItem checked={this.state.type === 'genius'} onChange={v=>this.handleChange('tyoe','genius')}>
                         牛人
