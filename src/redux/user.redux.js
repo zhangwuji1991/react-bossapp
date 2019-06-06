@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {getRedirectPath} from '../util.js'
+import {getRedirectPath} from '../util/util'
 
 const AUTH_SUCESS = 'AUTH_SUCESS'
 const ERROR_MSG = 'ERROR_MSG'
@@ -15,6 +15,7 @@ const initState={
 //reducer
 export function user(state=initState,action){
     switch(action.type){
+
         case AUTH_SUCESS:
             return {...state,msg:'',redirectTo:getRedirectPath(action.payload),...action.payload}
         case ERROR_MSG:
