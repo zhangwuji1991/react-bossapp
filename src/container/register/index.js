@@ -23,6 +23,9 @@ class Regsiter extends React.Component{
         this.handleRegister = this.handleRegister.bind(this)
         this.login = this.login.bind(this)
     }
+    componentDidMount(){
+        alert(1)
+    }
     handleChange(key,val){
         this.setState({
             [key]:val

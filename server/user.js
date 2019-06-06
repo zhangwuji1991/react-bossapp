@@ -8,8 +8,9 @@ const _filter = {'pwd':0,'_v':0}
 
 Router.get('/list',function(req,res){
     // User.remove({},function(req,res){})
-    User.find({},function(err,doc){
-        return res.json(doc)
+    const {type} = req.query
+    User.find({type},_filter,function(err,doc){
+        return res.json({code:0,data:doc})
     })
 })
 
@@ -44,6 +45,22 @@ Router.post('/login',function(req,res){
         // 设置cookie
         res.cookie('userid',doc._id)
         return res.json({code:0,data:doc})
+    })
+})
+
+// 保存信息
+Router.post('/updata',function(req,res){
+    const userid = req.cookies.userid
+    if (!userid) {
+        return json.dumps({code:1})
+    }
+    const body = req.body
+    User.findByIdAndUpdate(userid,body,function(err,doc){
+        const data = Object.assign({},{
+            user:doc.user,
+            type:doc.type
+        },body)
+        return res.json({code:0,data})
     })
 })
 

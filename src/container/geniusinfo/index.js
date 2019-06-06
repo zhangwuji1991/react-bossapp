@@ -11,13 +11,11 @@ import {upadata} from '../../redux/user.redux'
     {upadata}
 )
 
-class BossInfo extends React.Component{
+class GeniusInfo extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             title:'',
-            company:'',
-            money:'',
             desc:'',
             avatar:''
         }
@@ -46,13 +44,9 @@ class BossInfo extends React.Component{
                     })
                 }}></AvatarSelector>
                 <List  className="flex-container">
-                    <InputItem onChange={v=>this.onChange('title',v)}>招聘职位</InputItem>
+                    <InputItem onChange={v=>this.onChange('title',v)}>应聘职位</InputItem>
                     <WhiteSpace size="xl"/>
-                    <InputItem  onChange={v=>this.onChange('company',v)}>公司名称</InputItem>
-                    <WhiteSpace size="xl" />
-                    <InputItem  onChange={v=>this.onChange('money',v)}>职位薪资</InputItem>
-                    <WhiteSpace size="xl" />
-                    <TextareaItem type="password" row={3} autoHeight title='职位要求' onChange={v=>this.onChange('desc',v)}></TextareaItem>
+                    <TextareaItem type="password" row={3} autoHeight title='个人简历' onChange={v=>this.onChange('desc',v)}></TextareaItem>
                     <WhiteSpace size="xl" />
                     <Button className="but" onClick={this.handleSava}>保存</Button>
                 </List>
@@ -61,4 +55,4 @@ class BossInfo extends React.Component{
     }
 }
 
-export default BossInfo
+export default GeniusInfo
