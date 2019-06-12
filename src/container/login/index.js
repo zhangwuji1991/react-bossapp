@@ -5,33 +5,26 @@ import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
 import {login} from '../../redux/user.redux'
 import './index.less'
+import imoocFrom from '../../component/imooc-from/index'
 
 
 @connect(
     state=>state.user,
     {login}
 )
+@imoocFrom
+
 class Login extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            user:'',
-            pwd:''
-        }
         this.register     = this.register.bind(this)
         this.handleLoging = this.handleLoging.bind(this)
     }
     componentWillMount(){
         document.title = '登录'
     }
-    handleChange(key,val){
-        this.setState({
-            [key]:val
-        })
-    }
     handleLoging(){
-        console.log(this.state)
-        this.props.login(this.state)
+        this.props.login(this.props.state)
     }
     register(){
         this.props.history.push('./register')
@@ -39,15 +32,15 @@ class Login extends React.Component{
     render(){
         return( 
             <div className="flex-container">
-                {this.props.redirectTo ? <Redirect to={this.props.redirectTo}></Redirect> : null}
+                {(this.props.redirectTo&&this.props.redirectTo!=='/login') ? <Redirect to={this.props.redirectTo}></Redirect> : null}
                 <Logo />
                 {   this.props.msg ?
                         Toast.fail(this.props.msg, 1)
                         :null
                     }
-                <InputItem onChange={v=>this.handleChange('user',v)}>账号</InputItem> 
+                <InputItem onChange={v=>this.props.handleChange('user',v)}>账号</InputItem> 
                 <WhiteSpace size="xl" />
-                <InputItem onChange={v=>this.handleChange('pwd',v)} type="password">密码</InputItem> 
+                <InputItem onChange={v=>this.props.handleChange('pwd',v)} type="password">密码</InputItem> 
                 <WhiteSpace size="xl" />
                 <Flex>
                     <Flex.Item>

@@ -9,15 +9,17 @@ import './index.less'
     {getuserlist}
 )
 
-class Boss extends React.Component{
+class Genius extends React.Component{
 
     componentDidMount(){
-        this.props.getuserlist('genius')
+        this.props.getuserlist('boss')
     }
     
     render(){
-        return <UserCard userlist={this.props.userlist}></UserCard>
+
+        return <UserCard userlist={this.props.userlist} ></UserCard>
+        
     }
 }
 
-export default Boss
+export default Genius

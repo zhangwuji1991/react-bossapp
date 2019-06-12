@@ -4,6 +4,7 @@ import {getRedirectPath} from '../util/util'
 const AUTH_SUCESS = 'AUTH_SUCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LODA_DATA  = 'LODA_DATA'
+const LOGOUT = 'LOGOUT'
 
 const initState={
     redirectTo:'',
@@ -22,6 +23,8 @@ export function user(state=initState,action){
             return {...state,isAuth:false,msg:action.msg}
         case LODA_DATA:
             return {...state,...action.payload}
+        case LOGOUT:
+            return {...initState,redirectTo:'/login'}
         default:
             return state
     }
@@ -86,6 +89,10 @@ export function register({user,pwd,repeatpwd,type}){
             }
         })
     }
+}
+
+export function logoutSubmit(){
+    return { type:LOGOUT}
 }
 
 export function upadata(data){

@@ -3,26 +3,17 @@ import { connect } from 'react-redux';
 import {NavBar} from 'antd-mobile'
 import NavLinkBar from '../navlinkbar/index'
 import {Switch,Route} from 'react-router-dom'
-import Boss from '../../component/boss'
+import Boss from '../boss/index'
+import Genius from '../genius/index'
+import User from '../user/index'
 import './index.less'
 
-
-function Genius(){
-    return  <div className="dashboard">
-          Genius     
-    </div>
-}
 function Msg(){
     return  <div className="dashboard">
           Msg     
     </div>
 }
 
-function User(){
-    return  <div className="dashboard">
-          me     
-    </div>
-}
 
 @connect(
     state=>state
@@ -43,7 +34,7 @@ class Dashboard extends React.Component{
         const navList = [
             {
                 path:'/boss',
-                text:'boss',
+                text:'genius',
                 icon:'job',
                 title:'牛人列表',
                 component:Boss,
@@ -52,7 +43,7 @@ class Dashboard extends React.Component{
             },
             {
                 path:'/genius',
-                text:'genius',
+                text:'boss',
                 icon:'boss',
                 title:'Boss列表',
                 component:Genius,

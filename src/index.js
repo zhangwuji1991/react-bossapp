@@ -28,7 +28,7 @@ reactDom.render(
                 <Route path='/bossinfo' component={Bossinfo}></Route>
                 <Route path='/geniusinfo' component={GeniusInfo}></Route>
                 <Route path='/login' component={Login}></Route>
-                <Route path='/' component={Login}></Route>
+                {/* <Route path='/' component={Login}></Route> */}
                 <Route path='/register' component={Regsiter}></Route>
                 <Route  component={Dashboard}></Route>
             </Switch>

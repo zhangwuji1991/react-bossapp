@@ -24,12 +24,13 @@ class Regsiter extends React.Component{
         this.login = this.login.bind(this)
     }
     componentDidMount(){
-        alert(1)
+        document.title = '注册'
     }
     handleChange(key,val){
         this.setState({
             [key]:val
         })
+        console.log(val)
     }
     handleRegister(){
         this.props.register(this.state)
@@ -54,11 +55,11 @@ class Regsiter extends React.Component{
                     <WhiteSpace size="xl" />
                     <InputItem type="password" onChange={v=>this.handleChange('repeatpwd',v)}>确认密码</InputItem>
                     <WhiteSpace size="xl" />
-                    <RadioItem checked={this.state.type === 'genius'} onChange={v=>this.handleChange('tyoe','genius')}>
+                    <RadioItem checked={this.state.type === 'genius'} onChange={()=>this.handleChange('tyoe','genius')}>
                         牛人
                     </RadioItem>
                     <WhiteSpace size="xl" />
-                    <RadioItem checked={this.state.type === 'boss'} onChange={v=>this.handleChange('type','boss')}>
+                    <RadioItem checked={this.state.type === 'boss'} onChange={()=>this.handleChange('type','boss')}>
                         Boss
                     </RadioItem>
                     <WhiteSpace size="xl" />
