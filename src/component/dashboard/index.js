@@ -20,35 +20,27 @@ function Msg(){
 )
 class Dashboard extends React.Component{
     
-    constructor(props){
-        super(props)
-        this.state={
-            
-        }
-    }
-   
 
     render(){
         const user = this.props.user
         const {pathname} = this.props.location
+        console.log(pathname)
         const navList = [
             {
                 path:'/boss',
-                text:'genius',
-                icon:'job',
+                text:'牛人',
+                icon:'boss',
                 title:'牛人列表',
                 component:Boss,
                 hide:user.type==='genius'
-    
             },
             {
                 path:'/genius',
                 text:'boss',
-                icon:'boss',
+                icon:'job',
                 title:'Boss列表',
                 component:Genius,
                 hide:user.type==='boss'
-    
             },
             {
                 path:'/msg',
@@ -64,13 +56,14 @@ class Dashboard extends React.Component{
                 icon:'user',
                 title:'个人中心',
                 component:User
-    
             }
         ]
         
         return (
             <div className="dashboard">
-               <NavBar  className="navbar">{navList.find(v=>v.path===pathname).title}</NavBar>
+               <NavBar  className="navbar">
+                    {navList.find(v=>v.path===pathname).title}
+               </NavBar>
                <div style={{marginTop:45}}>
                     <Switch>
                         {navList.map(v=>(
@@ -78,7 +71,7 @@ class Dashboard extends React.Component{
                         ))}
                     </Switch>
                </div>
-               <NavLinkBar data={navList} className=""></NavLinkBar>
+               <NavLinkBar data={navList} ></NavLinkBar>
             </div>
         )
     }
