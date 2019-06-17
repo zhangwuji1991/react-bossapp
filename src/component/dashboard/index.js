@@ -6,20 +6,21 @@ import {Switch,Route} from 'react-router-dom'
 import Boss from '../boss/index'
 import Genius from '../genius/index'
 import User from '../user/index'
+import Msg from '../msg/index'
+import {getMegList,recvMsg} from '../../redux/chat'
 import './index.less'
 
-function Msg(){
-    return  <div className="dashboard">
-          Msg     
-    </div>
-}
-
-
 @connect(
-    state=>state
+    state=>state,
+    {getMegList,recvMsg}
 )
 class Dashboard extends React.Component{
-    
+    componentDidMount(){
+        if(!this.props.chat.chatmsg.length){
+            this.props.getMegList()
+            this.props.recvMsg()
+        }
+    }
 
     render(){
         const user = this.props.user

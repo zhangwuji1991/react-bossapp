@@ -1,6 +1,6 @@
 //连接mongo
 const mongoose = require('mongoose')
-const DB_URL = 'mongodb://21.254.181.14:8082/imooc-chat'
+const DB_URL = 'mongodb://localhost/imooc-chat'
 
 mongoose.connect(DB_URL)
 
