@@ -26,7 +26,7 @@ class UserCard extends React.Component{
                                 title={
                                     <div className="userlist-title">
                                         <p className="title">{v.title}</p>
-                                        <img src={require(`../../resoure/img/${v.avatar}.png`)} title="" />
+                                        <img src={require(`../../resoure/img/${v.avatar}.png`)} alt="" />
                                         <span className="userlist-user">{v.user}</span>
                                     </div>
                                 }

@@ -2,13 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {NavBar} from 'antd-mobile'
 import NavLinkBar from '../navlinkbar/index'
-import {Switch,Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import Boss from '../boss/index'
 import Genius from '../genius/index'
 import User from '../user/index'
 import Msg from '../msg/index'
 import {getMegList,recvMsg} from '../../redux/chat'
 import './index.less'
+import QueueAnim from 'rc-queue-anim'
 
 @connect(
     state=>state,
@@ -25,7 +26,6 @@ class Dashboard extends React.Component{
     render(){
         const user = this.props.user
         const {pathname} = this.props.location
-        console.log(pathname)
         const navList = [
             {
                 path:'/boss',
@@ -59,18 +59,17 @@ class Dashboard extends React.Component{
                 component:User
             }
         ]
-        
+        // 让动画生效 只渲染一个route 根据当前的path决定组件
+        const page = navList.find(V=>V.path===pathname)
         return (
             <div className="dashboard">
                <NavBar  className="navbar">
                     {navList.find(v=>v.path===pathname).title}
                </NavBar>
                <div style={{marginTop:45}}>
-                    <Switch>
-                        {navList.map(v=>(
-                            <Route key={v.path} path={v.path} component={v.component}></Route>
-                        ))}
-                    </Switch>
+                    <QueueAnim type='scaleX' duration={800}>
+                        <Route key={page.path} path={page.path} component={page.component}></Route>
+                    </QueueAnim>
                </div>
                <NavLinkBar data={navList} ></NavLinkBar>
             </div>
