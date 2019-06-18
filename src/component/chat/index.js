@@ -1,12 +1,12 @@
 import React from 'react'
 import {List,InputItem,NavBar,Icon,Grid} from 'antd-mobile'
 import {connect} from 'react-redux'
-import {getMegList,sendMsg,recvMsg} from '../../redux/chat'
+import {getMegList,sendMsg,recvMsg,readMsg} from '../../redux/chat'
 import { getChatId } from '../../util/util';
 
 @connect(
     state=>state,
-    {getMegList,sendMsg,recvMsg}
+    {getMegList,sendMsg,recvMsg,readMsg}
 )
 
 class Chat extends React.Component{
@@ -24,8 +24,6 @@ class Chat extends React.Component{
             this.props.getMegList()
             this.props.recvMsg()
         }
-       
-        
     }
     handleSubmit(){
         const from = this.props.user._id
@@ -38,6 +36,11 @@ class Chat extends React.Component{
         setTimeout(function () {
             window.dispatchEvent(new Event('resize'))
         }, 0)
+    }
+    // 路由离开的时候执行消息事件
+    componentWillUnmount(){
+        const to = this.props.match.params.user
+        this.props.readMsg(to)
     }
     render(){
         const emoji = '😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 😘 😗 😙 😚 🙂 🤗 🤩 🤔 🤨 😐 😑 😶 🙄 😏 😣 😥 😮 🤐 😯 😪 😫 😴 😌 😛 😜 😝 🤤 😒 😓 😔 😕 🙃 🤑 😲 ☹️ 🙁 😖 😞 😟 😤 😢 😭 😦 😧 😨 😩 🤯 😬 😰 😱 🥵 🥶 😳 🤪 😵 😡 😠 🤬 😷 🤒 🤕 🤢 🤮 🤧 😇 🤠 🤡 🥳 🥴 🥺 🤥 🤫 🤭 🧐 🤓 😈 👿 👹 👺 💀 👻 👽 🤖 💩 😺 😸 😹 😻 😼 😽 🙀 😿 😾'

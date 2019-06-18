@@ -8,7 +8,6 @@ const _filter = {'pwd':0,'_v':0}
 
 
 Router.get('/list',function(req,res){
-    // User.remove({},function(req,res){})
     const {type} = req.query
     User.find({type},_filter,function(err,doc){
         return res.json({code:0,data:doc})
@@ -17,7 +16,6 @@ Router.get('/list',function(req,res){
 
 //注册
 Router.post('/register',function(req,res){
-    console.log(req.body)
     const {user, pwd, type} = req.body
     User.findOne({user},function(err,doc){
         if(doc){
@@ -97,6 +95,18 @@ Router.get('/info',function(req,res){
     })
 })
 
+//更新消息
+Router.post('/readmsg',function(req,res){
+    const userid = req.cookies.userid
+    const {from} = req.body
+    Chat.update({from,to:userid},{'$set':{read:true}},{'multi':true},function (err,doc) {
+        if (!err) {
+            return res.json({code:0,num:doc.nModified})
+        }
+        return res.json({code:1,msg:'修改失败'})
+    })
+
+})
 
 function md5Pwd(pwd){
     const salt = 'immoc_ifadfajfaj!@#$%%%--'

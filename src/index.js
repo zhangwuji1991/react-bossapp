@@ -13,11 +13,9 @@ import Dashboard from './component/dashboard/index'
 import Chat from './component/chat/index'
 import "lib-flexible"
 import GeniusInfo from './container/geniusinfo';
-
 import './util/config'
 import 'antd-mobile/dist/antd-mobile.css';
 import './style/index.less'
-
 
 const store = createStore(reducers,applyMiddleware(thunk))
 
@@ -31,7 +29,7 @@ reactDom.render(
                     <Route path='/geniusinfo'  component={GeniusInfo}></Route>
                     <Route path='/login'       component={Login}></Route>
                     <Route path='/register'    component={Regsiter}></Route>
-                    <Route path='/chat/:user'        component={Chat}></Route>
+                    <Route path='/chat/:user'  component={Chat}></Route>
                     <Route  component={Dashboard}></Route>
                 </Switch>
             </div>

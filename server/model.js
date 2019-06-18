@@ -1,12 +1,8 @@
 //连接mongo
 const mongoose = require('mongoose')
-const DB_URL = 'mongodb://localhost/imooc-chat'
+const DB_URL = 'mongodb://21.254.181.14:8082/imooc-chat'
 
 mongoose.connect(DB_URL)
-
-// mongoose.connection.on('connected',function(){
-//     console.log('mongo connect sussess')
-// })
 
 // 类似mysql的表 mongo里有文档字段概念
 const models = {
