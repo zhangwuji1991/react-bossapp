@@ -51,7 +51,7 @@ class Chat extends React.Component{
         const userid = this.props.match.params.user
         const Item = List.Item
         const users = this.props.chat.users
-        console.log(this.props)
+
         if(!users[userid]){
             return null
         }
@@ -102,7 +102,7 @@ class Chat extends React.Component{
                                             showEmoji: !this.state.showEmoji
                                         }) 
                                         this.fixCarousel()
-                                    }}>😀</span>
+                                    }}><img src={require('../../resoure/img/emoji.png')} alt="" /></span>
                                     <span onClick={this.handleSubmit}>发送</span>
                                 </div>
                             }

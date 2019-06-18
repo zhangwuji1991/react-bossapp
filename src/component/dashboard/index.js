@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {NavBar} from 'antd-mobile'
 import NavLinkBar from '../navlinkbar/index'
-import {Route} from 'react-router-dom'
+import { Route, Redirect} from 'react-router-dom'
 import Boss from '../boss/index'
 import Genius from '../genius/index'
 import User from '../user/index'
@@ -61,7 +61,7 @@ class Dashboard extends React.Component{
         ]
         // 让动画生效 只渲染一个route 根据当前的path决定组件
         const page = navList.find(V=>V.path===pathname)
-        return (
+        return page ? (
             <div className="dashboard">
                <NavBar  className="navbar">
                     {navList.find(v=>v.path===pathname).title}
@@ -73,7 +73,7 @@ class Dashboard extends React.Component{
                </div>
                <NavLinkBar data={navList} ></NavLinkBar>
             </div>
-        )
+        ) : <Redirect to='/login'></Redirect>
     }
 }
 
